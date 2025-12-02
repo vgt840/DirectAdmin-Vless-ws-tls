@@ -35,25 +35,21 @@ function generateLink(address) {
 
 // HTTP 接口（可选，访问 http://IP:PORT/UUID 也能看到链接）
 const server = http.createServer((req, res) => {
-  // 根路径：显示提示信息（更隐蔽）
+  // 根路径：返回假 HTML 页（让面板健康检查通过）
   if (req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-    res.end('VLESS-WS-TLS Node Running\n访问 /' + UUID + ' 获取节点链接');
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<html><body><h1>VLESS-WS-TLS Node Running</h1><p>访问 /' + UUID + ' 获取节点链接</p></body></html>');
   }
-  // 正确路径：输入 /UUID 才能看到 8 条链接
+  // /UUID 路径：正常返回 8 条链接（text/plain）
   else if (req.url === `/${UUID}`) {
     let txt = "═════ 8 条节点链接 ═════\n\n";
     txt += generateLink(DOMAIN) + "\n\n";
-    BEST_DOMAINS.forEach((d, i) => {
-      txt += generateLink(d) + "\n";
-      if (i < BEST_DOMAINS.length - 1) txt += "\n";
-    });
+    BEST_DOMAINS.forEach(d => txt += generateLink(d) + "\n");
     txt += "\n控制台已完整输出，可直接复制使用";
-
     res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end(txt);
   }
-  // 其他路径一律 404（防止被扫）
+  // 其他路径 404
   else {
     res.writeHead(404);
     res.end('404 Not Found');
