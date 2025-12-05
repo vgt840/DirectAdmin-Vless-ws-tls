@@ -1,14 +1,12 @@
-// ====== 只修改三个核心变量 UUID/PORT/DOMAIN ======
+// ====== 只修改两个核心变量 UUID/DOMAIN ======
 
 const UUID   = (process.env.UUID   || "00000000-0000-0000-0000-000000000000").trim(); // 双引号内填入UUID
-
-const PORT   = (process.env.PORT   || "56789").trim(); // 端口范围建议 10000~65000
 
 const DOMAIN = (process.env.DOMAIN || "your-domain.example.com").trim(); // 托管到CF的域名（带前缀） 
 
 // Panel
 const NAME   = "DirectAdmin-eishare";
-
+const PORT   = (process.env.PORT   || "3000").trim(); // 无需修改
 const BEST_DOMAINS = [
   "www.visa.cn",
   "usa.visa.com",
@@ -127,8 +125,12 @@ wss.on("connection", ws => {
 // ============================================================
 // ===============               启动信息              ===============
 // ============================================================
-server.listen(Number(PORT), () => {
+const listenPort = Number(PORT) || 0;  // 0 = 随机端口
+server.listen(listenPort, "127.0.0.1", () => {
+    const actualPort = server.address().port;
+
     console.log("\n===============================================");
+  
     console.log("          VLESS-WS-TLS 已成功启动");
     console.log("===============================================\n");
 
