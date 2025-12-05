@@ -18,6 +18,7 @@
    
      输入：
           public_html
+  
           index.js
 
      然后：
