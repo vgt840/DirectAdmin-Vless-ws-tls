@@ -11,7 +11,7 @@ const NAME   = "easyshare";
 
 const BEST_DOMAINS = [
   "www.visa.cn",
-  "www.visa.com",
+  "usa.visa.com",
   "www.wto.org",
   "shopify.com",
   "time.is",
