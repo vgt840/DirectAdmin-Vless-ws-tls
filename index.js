@@ -1,6 +1,6 @@
 // ====== 只修改两个核心变量 UUID/DOMAIN ======
 
-const UUID   = (process.env.UUID   || "00000000-0000-0000-0000-000000000000").trim(); // 双引号内填入UUID
+const UUID   = (process.env.UUID   || "0cbbd5b1-2ba6-405f-b71d-03c92cb7b6e8").trim(); // 双引号内填入UUID
 
 const DOMAIN = (process.env.DOMAIN || "your-domain.example.com").trim(); // 托管到CF的域名（带前缀） 
 
