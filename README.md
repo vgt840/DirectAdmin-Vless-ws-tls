@@ -1,8 +1,8 @@
 ### Vless+ws+tls 单节点部署+多优选域名+CF保活方案 说明：
 
-* 适用Webfreecloud、Web.C-Servers的DirectAdmin面板node.js环境 
+* 适用Webfreecloud、WebHostMost、Web.C-Servers的DirectAdmin面板node.js环境 
   
-* 随机端口，无需担心端口占用困扰
+* 改为系统自行匹配端口，无需考虑端口占用等问题
 
 * 多区域优选域名覆盖，延迟低，网络表现优异
 
