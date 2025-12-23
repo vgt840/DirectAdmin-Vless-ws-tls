@@ -33,7 +33,9 @@
   Run NPM Install
 
   Run JS script
+
   start
+
   Run JS script
   
 * 4：（以上未见红色报错）浏览器访问 域名/UUID，可见节点链接地址
